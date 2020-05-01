@@ -2,8 +2,6 @@
 
 const SequelizeUtils = require('../../helpers/sequelizeHelper');
 const faker = require('faker');
-const uuid = require('short-uuid').uuid;
-const fs = require('fs');
 const amount = 50;
 
 module.exports = {
