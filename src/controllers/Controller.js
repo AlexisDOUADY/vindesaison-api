@@ -11,10 +11,10 @@ module.exports = class Controller
 
     list(req, res)
     {
-        let { limit, offset, searchQuery } = req.query;
+        //let { limit, offset, searchQuery } = req.query;
         let options = { where: {}, include: this.includes };
 
-        if(limit)
+        /*if(limit)
             if(!this.controlLimit(res, options, limit))
                 return;
 
@@ -24,16 +24,16 @@ module.exports = class Controller
 
         if(searchQuery)
             if(!this.controlSearchQuery(res, options, searchQuery))
-                return;
+                return;*/
 
         const countOptions = { where: options.where, includes: options.includes }
         this.model.count(countOptions)
-            .then(count => {
-                this.model.findAll(options)
-                .then(models => !models ? responseHelper.error404(req, res) : res.json({ models: models, count: count }))
-                .catch(e => responseHelper.error500(res, e))
-            })
+        .then(count => {
+            this.model.findAll(options)
+            .then(models => !models ? responseHelper.error404(req, res) : res.json({ models: models, count: count }))
             .catch(e => responseHelper.error500(res, e))
+        })
+        .catch(e => responseHelper.error500(res, e))
     }
 
     controlLimit(res, options = { where: {} }, limit)
@@ -85,11 +85,6 @@ module.exports = class Controller
             console.log(e)
             return false;
         }
-    }
-
-    controlOrderQuery(res, options = { where: {} }, searchQuery)
-    {
-
     }
 
     show(req, res)
