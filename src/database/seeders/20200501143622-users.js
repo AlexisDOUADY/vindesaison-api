@@ -13,6 +13,7 @@ module.exports = {
       lastname: 'Demo',
       email: 'demo@vds.fr',
       password: 'vds@demo2020',
+      phone: '0658803100',
       createdAt: new Date(),
       updatedAt: new Date()
     }]
@@ -24,6 +25,7 @@ module.exports = {
         lastname: faker.name.lastName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
+        phone: faker.phone.phoneNumber('06########'),
         createdAt: faker.date.recent(),
         updatedAt: new Date()
       })
