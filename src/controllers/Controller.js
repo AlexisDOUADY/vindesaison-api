@@ -11,7 +11,7 @@ module.exports = class Controller
 
     list(req, res)
     {
-        let options = { where: {}, include: this.includes };
+        let options = { where: {}, order: [[ 'createdAt', 'DESC' ]], include: this.includes };
 
         const countOptions = { where: options.where, includes: options.includes }
         this.model.count(countOptions)

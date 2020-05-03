@@ -5,6 +5,11 @@ module.exports =
         res.status(200).json({ code: 200, message: 'Success' })
     },
 
+    successBody(res, body = {})
+    {
+        res.status(200).json({ code: 200, message: 'Success', body: body })
+    },
+
     error400(res, msg)
     {
         res.status(400).json({ code: 400, message: `Bad request : ${msg}`});
