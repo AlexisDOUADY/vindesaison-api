@@ -1,8 +1,10 @@
-const router = require('express').Router();
+const express = require('express');
+const path = require('path');
 const controllers = require('../controllers').routes;
 const responseHelper = require('../helpers/responseHelper');
 const uploader = require('../middlewares/uploader');
 const ImageController = require('../controllers/ImageController');
+const router = express.Router();
 
 router.use('*', (req, res, next) => {
    res.header('Access-Control-Allow-Origin', '*');
@@ -29,6 +31,7 @@ for(let i = 0; i < controllers.length; i++)
    }
 }
 
+router.use('/images', express.static(path.join(__dirname, '../../public/images')))
 router.use('/upload', uploader.single('image'), (req, res) => { new ImageController().upload(req, res) });
 router.use('*', (req, res) => responseHelper.error404(req, res))
 
