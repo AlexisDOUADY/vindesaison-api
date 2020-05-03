@@ -17,6 +17,9 @@ module.exports = {
       price: {
         type: Sequelize.DOUBLE
       },
+      image: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
