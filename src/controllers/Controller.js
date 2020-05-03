@@ -40,9 +40,9 @@ module.exports = class Controller
     update(req, res)
     {
         this.model.findOne({ where: { id: req.params.uuid }})
-        .then(model => model.update(req.body)
+        .then(model => { req.body.updatedAt = new Date(); model.update(req.body); })
             .then(res.json(responseHelper.success(res)))
-            .catch(e => responseHelper.error500(res, e)))
+            .catch(e => responseHelper.error500(res, e))
         .catch(() => responseHelper.error404(req, res))
     }
 
