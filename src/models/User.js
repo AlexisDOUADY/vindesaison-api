@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models)
   {
     User.belongsTo(models.Rank, { as: 'rank', foreignKey: { name: 'rank_id' } })
+    User.hasMany(models.Address, { as: 'addresses', foreignKey: { name: 'user_id' } })
   }
 
   return User;
