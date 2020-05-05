@@ -2,12 +2,14 @@
 
 const SequelizeUtils = require('../../helpers/sequelizeHelper');
 const faker = require('faker');
+const uuid = require('short-uuid');
 
 module.exports = {
   up: (queryInterface) => {
 
     let boxes = [
         {
+            ref: uuid('0123456789').new().slice(0, 6),
             name: 'Une box',
             description: 'Remplie de bonnes choses',
             price: 15,
@@ -16,6 +18,7 @@ module.exports = {
             updatedAt: new Date()
         },
         {
+            ref: uuid('0123456789').new().slice(0, 6),
             name: 'Une autre box',
             description: 'Mais plus chère',
             price: 20,

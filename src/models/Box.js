@@ -2,6 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
   let Box = sequelize.define('Box', {
+    ref: DataTypes.STRING,
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     price: DataTypes.DOUBLE,

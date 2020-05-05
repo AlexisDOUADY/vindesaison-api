@@ -2,6 +2,7 @@
 
 const SequelizeUtils = require('../../helpers/sequelizeHelper');
 const faker = require('faker');
+const uuid = require('short-uuid');
 const amount = 50;
 
 module.exports = {
@@ -16,6 +17,7 @@ module.exports = {
         password: 'vds@demo2020',
         phone: '0658803100',
         rank_id: 1,
+        ref: uuid('0123456789').new().slice(0, 6),
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -25,7 +27,8 @@ module.exports = {
         email: 'alexis.douady@viacesi.fr',
         password: 'vds@admin2020',
         phone: '0658803100',
-        rank_id: 1,
+        rank_id: 2,
+        ref: uuid('0123456789').new().slice(0, 6),
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -40,6 +43,7 @@ module.exports = {
         password: faker.internet.password(),
         phone: faker.phone.phoneNumber('06########'),
         rank_id: 1,
+        ref: uuid('0123456789').new().slice(0, 6),
         createdAt: faker.date.recent(),
         updatedAt: new Date()
       })
