@@ -25,6 +25,11 @@ module.exports = {
             },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
+      },
+      quantity: {
+          type: Sequelize.INTEGER,
+          defaultValue: 1,
+          allowNull: false
       }
     });
   },

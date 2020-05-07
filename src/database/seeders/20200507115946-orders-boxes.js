@@ -26,6 +26,7 @@ module.exports = {
             {
               order_id: i,
               box_id: boxId,
+              quantity: faker.random.number({ min: 1, max: 3 }),
             })
       }
     }

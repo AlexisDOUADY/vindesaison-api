@@ -24,7 +24,8 @@ module.exports = {
         wines.push(
             {
               order_id: i,
-              wine_id: wineId
+              wine_id: wineId,
+              quantity: faker.random.number({ min: 1, max: 3 }),
             })
       }
     }
