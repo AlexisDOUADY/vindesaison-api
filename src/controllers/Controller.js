@@ -97,8 +97,8 @@ module.exports = class Controller
 
     store(req, res)
     {
-        if(req.body.ref)
-            req.body.ref = uuid('0123456789').new().slice(0, 6);
+        if(req.body.model.ref === '')
+            req.body.model.ref = uuid('0123456789').new().slice(0, 6);
         this.model.create(req.body.model)
         .then(res.json(responseHelper.success(res)))
         .catch(e => responseHelper.error500(res, e))
