@@ -4,6 +4,7 @@ const WineController = require('./WineController');
 const BoxController = require('./BoxController');
 const RankController = require('./RankController');
 const AddressController = require('./AddressController');
+const OrderController = require('./OrderController');
 
 module.exports.routes =
 [
@@ -11,5 +12,6 @@ module.exports.routes =
     { route: 'users', controller: new UserController() },
     { route: 'addresses', controller: new AddressController() },
     { route: 'wines', controller: new WineController() },
-    { route: 'boxes', controller: new BoxController()  },
+    { route: 'boxes', controller: new BoxController() },
+    { route: 'orders', controller: new OrderController() },
 ];
