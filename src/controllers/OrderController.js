@@ -2,7 +2,7 @@
 const models = require('../models');
 const Controller = require('./Controller');
 
-module.exports = class AddressController extends Controller {
+module.exports = class OrderController extends Controller {
 
     constructor() {
         super(models.Order, [
