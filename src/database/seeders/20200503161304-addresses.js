@@ -15,8 +15,8 @@ module.exports = {
         {
             firstname: faker.name.firstName(),
             lastname: faker.name.lastName(),
-            line1: faker.address.streetName(),
-            line2: faker.address.streetSuffix(),
+            line1: faker.address.streetAddress('###'),
+            line2: faker.address.secondaryAddress(),
             city: faker.address.city(),
             postalcode: faker.address.zipCode(),
             phone: faker.phone.phoneNumber('06########'),

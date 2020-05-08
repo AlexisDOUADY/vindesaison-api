@@ -12,7 +12,7 @@ module.exports = class Controller
 
     list(req, res)
     {
-        let { limit, offset, searchQuery } = req.query;
+        let { limit, offset, searchQuery, order } = req.query;
         let options = { where: {}, include: this.includes };
 
         if(limit)
@@ -22,6 +22,9 @@ module.exports = class Controller
         if(offset)
             if(!this.controlOffset(res, options, offset))
                 return;
+
+        if(!this.controlOrder(options, order))
+            return;
 
         if(searchQuery)
             this.controlSearchQuery(res, options, searchQuery)
@@ -89,6 +92,23 @@ module.exports = class Controller
         }
 
         return false;
+    }
+
+    controlOrder(options = { where: {} }, order)
+    {
+        try
+        {
+            if(order)
+                options.order = JSON.parse(order);
+            else
+                options.order = [['createdAt', 'DESC']];
+            return true;
+        }
+        catch (e)
+        {
+            responseHelper.error400(res, 'Limit given is not parsable as an integer')
+            return false;
+        }
     }
 
     show(req, res)
