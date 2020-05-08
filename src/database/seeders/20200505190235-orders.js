@@ -18,7 +18,7 @@ module.exports = {
             delivery_address_id: faker.random.number({ min: 1, max: 100 }),
             bill_address_id: faker.random.number({ min: 1, max: 100 }),
             user_id: faker.random.number({ min: 1, max: 52 }),
-            createdAt: faker.date.recent(),
+            createdAt: faker.date.recent(31),
             updatedAt: new Date()
         })
 
