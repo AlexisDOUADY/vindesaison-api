@@ -24,8 +24,7 @@ module.exports = class Controller
                 return;
 
         if(searchQuery)
-            if(!this.controlSearchQuery(res, options, searchQuery))
-                return;
+            this.controlSearchQuery(res, options, searchQuery)
 
         const countOptions = { where: options.where, includes: options.includes }
         this.model.count(countOptions)
@@ -72,20 +71,24 @@ module.exports = class Controller
         try {
             searchQuery = JSON.parse(searchQuery);
             let keywords = searchQuery.keywords
-
+            
             if(keywords)
             {
-                keywords = keywords.split(' ');
-                keywords = keywords.map(word => { return { [Op.like]: `%${word}%` } });
+                if(keywords.length)
+                {
+                    keywords = keywords.split(' ');
+                    keywords = keywords.map(word => { return { [Op.like]: `%${word}%` } });
 
-                options.where.name = { [Op.and]: keywords };
-                return true;
+                    options.where.name = { [Op.and]: keywords };
+                    return true;
+                }
             }
         } catch(e) {
             responseHelper.error500(res, e);
             console.log(e)
-            return false;
         }
+
+        return false;
     }
 
     show(req, res)

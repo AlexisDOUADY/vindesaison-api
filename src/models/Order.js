@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     Order.belongsTo(models.Address, { as: 'bill_address', foreignKey: { name: 'bill_address_id' } })
     Order.belongsTo(models.User, { as: 'user', foreignKey: { name: 'user_id' } })
     Order.belongsToMany(models.Wine, { as: 'wines', through: models.OrderWine, foreignKey: 'order_id', otherKey: 'wine_id' })
-    Order.belongsToMany(models.Box, { as: 'boxes', through: 'orders_boxes', foreignKey: 'order_id', otherKey: 'box_id' })
+    Order.belongsToMany(models.Box, { as: 'boxes', through: models.OrderBox, foreignKey: 'order_id', otherKey: 'box_id' })
   }
 
   return Order;
